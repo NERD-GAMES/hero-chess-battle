@@ -1,18 +1,32 @@
-import { AppProps } from 'next/app';
 import Head from 'next/head';
-import './styles.css';
+import { theme } from '../utils/theme'
+import './styles.css'
 
-function CustomApp({ Component, pageProps }: AppProps) {
+import { ThemeProvider, Container } from '@mui/material'
+import createEmotionCache from '../utils/createEmotionCache'
+import { CacheProvider } from '@emotion/react'
+
+const clientSideEmotionCache = createEmotionCache()
+
+function MyApp({
+  Component,
+  emotionCache = clientSideEmotionCache,
+  pageProps,
+}) {
   return (
     <>
       <Head>
         <title>Hero Chess Battle</title>
       </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <Container>
+            <Component {...pageProps} />
+          </Container>
+        </ThemeProvider>
+      </CacheProvider>
     </>
-  );
+  )
 }
 
-export default CustomApp;
+export default MyApp
