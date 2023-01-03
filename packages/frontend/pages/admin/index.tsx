@@ -7,6 +7,9 @@ import { AddOrEditModal } from '../../components/addOrEditModal'
 
 const sumPercent = (value: number, percent: number) => {
   const newValue = Number(value)
+  const min = -0.1
+  const max = 0.1
+  percent += Math.random() * (max  - min) + min
   return Math.floor(newValue + newValue * percent)
 }
 
@@ -35,6 +38,9 @@ export default () => {
         ...hero,
         rarity: HERO_RARITY.Common,
         move: getMoveRandom(),
+        attack: sumPercent(hero.attack, 0),
+        defender: sumPercent(hero.defender, 0),
+        value: sumPercent(hero.value, 0),
         id: new Date().getTime().toString(),
       })
     }
@@ -45,6 +51,7 @@ export default () => {
         move: getMoveRandom(),
         attack: sumPercent(hero.attack, 0.2),
         defender: sumPercent(hero.defender, 0.2),
+        value: sumPercent(hero.value, 0.2),
         id: new Date().getTime().toString(),
       })
     }
@@ -55,6 +62,7 @@ export default () => {
         move: getMoveRandom(),
         attack: sumPercent(hero.attack, 0.4),
         defender: sumPercent(hero.defender, 0.4),
+        value: sumPercent(hero.value, 0.4),
         id: new Date().getTime().toString(),
       })
     }
@@ -65,6 +73,7 @@ export default () => {
         move: getMoveRandom(),
         attack: sumPercent(hero.attack, 0.6),
         defender: sumPercent(hero.defender, 0.6),
+        value: sumPercent(hero.value, 0.6),
         id: new Date().getTime().toString(),
       })
     }
@@ -75,6 +84,7 @@ export default () => {
         move: getMoveRandom(),
         attack: sumPercent(hero.attack, 0.8),
         defender: sumPercent(hero.defender, 0.8),
+        value: sumPercent(hero.value, 0.8),
         id: new Date().getTime().toString(),
       })
     }
