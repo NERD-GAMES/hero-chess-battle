@@ -1,18 +1,21 @@
-import Head from 'next/head';
+import Head from 'next/head'
 import { theme } from '../utils/theme'
 import './styles.css'
+import { AppProps } from 'next/app'
 
 import { ThemeProvider, Container } from '@mui/material'
 import createEmotionCache from '../utils/createEmotionCache'
-import { CacheProvider } from '@emotion/react'
+import { CacheProvider, EmotionCache } from '@emotion/react'
 
 const clientSideEmotionCache = createEmotionCache()
 
-function MyApp({
-  Component,
-  emotionCache = clientSideEmotionCache,
-  pageProps,
-}) {
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache
+}
+
+export default function MyApp(props: MyAppProps) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+
   return (
     <>
       <Head>
@@ -28,5 +31,3 @@ function MyApp({
     </>
   )
 }
-
-export default MyApp
