@@ -12,7 +12,7 @@
       "rules": {
         "@next/next/no-html-link-for-pages": [
           "error",
-          "packages/frontend/pages"
+          "packages/frontend/src/pages"
         ],
         "react/display-name": "off"
       }
