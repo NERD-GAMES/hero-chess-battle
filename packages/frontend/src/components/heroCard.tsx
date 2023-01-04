@@ -23,7 +23,7 @@ export const HeroCard = ({ hero }: IProps) => {
         border-radius: 20px;
         border: 4px solid gray;
         padding: 5px;
-        width: 200px;
+        width: 218px;
         &:hover {
           border-color: blue;
         }
@@ -66,8 +66,8 @@ export const HeroCard = ({ hero }: IProps) => {
                 style={{
                   ...a.style,
                   position: 'absolute',
-                  maxWidth: 200,
-                  maxHeight: 200,
+                  maxWidth: "100%",
+                  maxHeight: "100%",
                 }}
                 alt=""
               />

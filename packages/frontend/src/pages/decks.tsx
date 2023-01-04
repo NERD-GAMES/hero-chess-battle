@@ -1,7 +1,7 @@
 export default ()=>{
     return (
         <div>
-            <h1>Meus Deck</h1>s
+            <h1>Meus Deck</h1>
             <a href="/deck/546654632">Deck Pikachu</a>
             <button>Novo Deck</button>
             <button>Meus Heróis</button>

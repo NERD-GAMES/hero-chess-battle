@@ -8,9 +8,6 @@ export default () => {
   return (
     <div>
       <h1>Hero Chess Battle</h1>
-      <Link href="/lobby">Partidas Online</Link>
-      <Link href="/admin">Admin</Link>
-
       <h2>{user?.displayName}</h2>
 
       {user?.photoURL && <img src={user.photoURL} alt={user.displayName} />}

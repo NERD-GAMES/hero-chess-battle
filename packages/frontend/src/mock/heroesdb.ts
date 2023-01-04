@@ -84,7 +84,7 @@ const lupita: IHero = {
     },
     {
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpAG0qvjFupIRGWlIxLgpdPVvSxn0UBzFwYQ&usqp=CAU',
-      style: { width: 120, right: 70, top: -25 },
+      style: { width: 120, right: 65, top: -20 },
     },
   ],
 }
