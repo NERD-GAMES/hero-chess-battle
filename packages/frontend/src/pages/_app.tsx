@@ -36,7 +36,7 @@ const clientSideEmotionCache = createEmotionCache()
 
 interface MyAppProps extends AppProps {
   Component: any
-  emotionCache?: any
+  emotionCache?: EmotionCache
 }
 
 // ** Pace Loader
@@ -75,7 +75,6 @@ export default function MyApp(props: MyAppProps) {
             {({ settings }) => {
               return (
                 <ThemeComponent settings={settings}>
-                  {/* <Component {...pageProps} /> */}
                   {getLayout(<Component {...pageProps} />)}
                 </ThemeComponent>
               )

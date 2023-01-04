@@ -17,7 +17,7 @@ import VerticalNavItems from '../navigation/vertical'
 import VerticalAppBarContent from './components/vertical/AppBarContent'
 
 // ** Hook Import
-import { useSettings } from '../@core/hooks/useSettings'
+import { useSettings } from '../@core/context/settingsContext'
 
 interface Props {
   children: ReactNode

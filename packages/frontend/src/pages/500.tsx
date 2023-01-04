@@ -14,7 +14,7 @@ import Box, { BoxProps } from '@mui/material/Box'
 import BlankLayout from '../@core/layouts/BlankLayout'
 
 // ** Demo Imports
-import FooterIllustrations from '../views/pages/misc/FooterIllustrations'
+import FooterIllustrations from '../components/FooterIllustrations'
 
 // ** Styled Components
 const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({

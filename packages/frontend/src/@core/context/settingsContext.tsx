@@ -1,5 +1,5 @@
 // ** React Imports
-import { createContext, useState, ReactNode } from 'react'
+import { createContext, useState, ReactNode, useContext } from 'react'
 
 // ** MUI Imports
 import { PaletteMode } from '@mui/material'
@@ -49,3 +49,6 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
 }
 
 export const SettingsConsumer = SettingsContext.Consumer
+
+export const useSettings = (): SettingsContextValue =>
+  useContext(SettingsContext)
