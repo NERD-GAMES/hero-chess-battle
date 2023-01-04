@@ -1,5 +1,6 @@
 // ** Next Imports
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react'
 import { Router } from 'next/router'
 import type { AppProps } from 'next/app'
 
@@ -82,6 +83,7 @@ export default function MyApp(props: MyAppProps) {
           </SettingsProvider>
         </UserProvider>
       </CacheProvider>
+      <Analytics />
     </>
   )
 }

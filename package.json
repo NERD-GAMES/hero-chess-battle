@@ -54,6 +54,7 @@
     "@emotion/server": "11.10.0",
     "@emotion/styled": "11.10.5",
     "@mui/material": "^5.11.3",
+    "@vercel/analytics": "^0.1.6",
     "animate.css": "^4.1.1",
     "core-js": "^3.6.5",
     "firebase": "^9.15.0",
