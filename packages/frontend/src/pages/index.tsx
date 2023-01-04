@@ -1,9 +1,8 @@
 import { Button } from '@mui/material'
-import Link from 'next/link'
-import { useSignInWithPopupGoogle } from '../services/auth/useSignInWithPopupGoogle'
+import { useUserContext } from '../@context/userContext'
 
 export default () => {
-  const { user, onGoogleSignIn } = useSignInWithPopupGoogle()
+  const { user, onGoogleSignIn } = useUserContext()
 
   return (
     <div>
@@ -11,7 +10,7 @@ export default () => {
       <h2>{user?.displayName}</h2>
 
       {user?.photoURL && <img src={user.photoURL} alt={user.displayName} />}
-      {!user?.uid && (
+      {!user?.isLogged && (
         <Button onClick={onGoogleSignIn}>Entrar com Google</Button>
       )}
     </div>

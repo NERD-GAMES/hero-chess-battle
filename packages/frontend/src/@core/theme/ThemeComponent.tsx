@@ -11,7 +11,7 @@ import {
 } from '@mui/material/styles'
 
 // ** Type Imports
-import { Settings } from '../../@core/context/settingsContext'
+import { Settings } from '../../@context/settingsContext'
 
 // ** Theme Config
 import themeConfig from '../../configs/themeConfig'

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Settings } from '../../@core/context/settingsContext'
+import { Settings } from '../../@context/settingsContext'
 
 export type ContentWidth = 'full' | 'boxed'
 
@@ -22,13 +22,13 @@ export type NavLink = {
   openInNewTab?: boolean
   icon?: string | ReactNode | any
   badgeColor?:
-  | 'default'
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'error'
-  | 'warning'
-  | 'info'
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'error'
+    | 'warning'
+    | 'info'
 }
 
 export type NavSectionTitle = {

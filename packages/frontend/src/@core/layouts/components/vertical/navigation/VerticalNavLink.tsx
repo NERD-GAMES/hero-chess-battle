@@ -21,7 +21,7 @@ import themeConfig from '../../../../../configs/themeConfig'
 
 // ** Types
 import { NavLink } from '../../../../../@core/layouts/types'
-import { Settings } from '../../../../../@core/context/settingsContext'
+import { Settings } from '../../../../../@context/settingsContext'
 
 // ** Custom Components Imports
 import UserIcon from '../../../../../layouts/components/UserIcon'

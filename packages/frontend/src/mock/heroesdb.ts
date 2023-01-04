@@ -2,6 +2,7 @@ import {
   HERO_COIN,
   HERO_MOVE,
   HERO_RARITY,
+  HERO_STATUS,
   HERO_TYPE,
   IHero,
 } from '../@types/IHero'
@@ -17,6 +18,7 @@ const sharp: IHero = {
   attack: 2000,
   defender: 1500,
   type: HERO_TYPE.Hero,
+  status: HERO_STATUS.Draft,
   move: HERO_MOVE.Pawn,
   rarity: HERO_RARITY.SuperRare,
   value: 2458,
@@ -43,6 +45,7 @@ const zeus: IHero = {
   },
   attack: 200,
   defender: 1500,
+  status: HERO_STATUS.Draft,
   type: HERO_TYPE.Hero,
   move: HERO_MOVE.Pawn,
   rarity: HERO_RARITY.SuperRare,
@@ -72,6 +75,7 @@ const lupita: IHero = {
   },
   attack: 200,
   defender: 1500,
+  status: HERO_STATUS.Draft,
   type: HERO_TYPE.Hero,
   move: HERO_MOVE.Queen,
   rarity: HERO_RARITY.SuperRare,
@@ -89,4 +93,29 @@ const lupita: IHero = {
   ],
 }
 
-export const heroes: IHero[] = [sharp, zeus, lupita]
+const toto: IHero = {
+  id: '4',
+  name: 'Totó',
+  description: `Caramelo, o cachorro de rua mais amado do Brasil`,
+  attack: 10,
+  defender: 2500,
+  status: HERO_STATUS.Available,
+  type: HERO_TYPE.Hero,
+  move: HERO_MOVE.King,
+  rarity: HERO_RARITY.SuperRare,
+  value: 258,
+  coin: HERO_COIN.Dollar,
+  avatar: [
+    {
+      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHdsINzUAN21PwrIiV3A6WY9N4i4WspwB8WQ&usqp=CAU',
+      style: { left: 20 },
+    },
+    {
+      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpAG0qvjFupIRGWlIxLgpdPVvSxn0UBzFwYQ&usqp=CAU',
+      animates: ['bounce', 'delay-1s', 'slower'],
+      style: { width: 120, right: 50, top: -20 },
+    },
+  ],
+}
+
+export const heroes: IHero[] = [sharp, zeus, lupita, toto]

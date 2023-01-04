@@ -10,7 +10,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // ** Type Import
-import { Settings } from '../../../../../@core/context/settingsContext'
+import { Settings } from '../../../../../@context/settingsContext'
 import { VerticalNavItemsType } from '../../../../../@core/layouts/types'
 
 // ** Component Imports

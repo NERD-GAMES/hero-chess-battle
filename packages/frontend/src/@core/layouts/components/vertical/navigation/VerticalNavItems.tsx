@@ -1,5 +1,5 @@
 // ** Types Import
-import { Settings } from '../../../../../@core/context/settingsContext'
+import { Settings } from '../../../../../@context/settingsContext'
 import {
   NavLink,
   NavSectionTitle,

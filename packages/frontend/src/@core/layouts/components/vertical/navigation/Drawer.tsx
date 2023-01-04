@@ -8,7 +8,7 @@ import MuiSwipeableDrawer, {
 } from '@mui/material/SwipeableDrawer'
 
 // ** Type Import
-import { Settings } from '../../../../../@core/context/settingsContext'
+import { Settings } from '../../../../../@context/settingsContext'
 
 interface Props {
   hidden: boolean

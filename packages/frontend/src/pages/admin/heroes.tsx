@@ -2,8 +2,18 @@ import { useState } from 'react'
 import { heroes } from '../../mock/heroesdb'
 import { HERO_MOVE, HERO_RARITY, IHero } from '../../@types/IHero'
 import { HeroCard } from '../../components/heroCard'
-import { Button, Grid } from '@mui/material'
+import {
+  Avatar,
+  Button,
+  Grid,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material'
 import { AddOrEditModal } from '../../components/addOrEditModal'
+import { Title } from '../../components/title'
 
 const sumPercent = (value: number, percent: number) => {
   const newValue = Number(value)
@@ -24,7 +34,8 @@ const getMoveRandom = () => {
 
 export default () => {
   const [heroesList, setHeroesList] = useState(heroes)
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [visualTable, setVisualTable] = useState(true)
 
   const onSave = (hero: IHero, copies: number) => {
     const copiesSL = Math.ceil(copies * 0.01)
@@ -94,23 +105,79 @@ export default () => {
 
   return (
     <div>
-      <h1>Admin</h1>
-      <Button onClick={() => setOpen(true)}>Adicionar</Button>
-      <Grid container spacing={1}>
-        {heroesList.map((hero) => (
-          <Grid item key={hero.id}>
-            <HeroCard hero={hero} />
-            <div style={{ textAlign: 'center' }}>
-              <div>
-                Valor: {hero.coin} {hero.value}
-              </div>
-              <div>
-                Dono: {hero.owner?.name} ({hero.owner?.id})
-              </div>
-            </div>
+      <Title
+        title="Nossos Heróis"
+        actionsRight={
+          <>
+            <Button onClick={() => setVisualTable(!visualTable)}>
+              Visualizar em {visualTable ? 'Cards' : 'Tabela'}
+            </Button>
+            <Button variant="contained" onClick={() => setOpen(true)}>
+              Produzir novos heróis
+            </Button>
+          </>
+        }
+      />
+
+      <div style={{ marginTop: 10 }}>
+        {visualTable && (
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell>#</TableCell>
+                <TableCell>Nome</TableCell>
+                <TableCell>Valor</TableCell>
+                <TableCell>Ataque</TableCell>
+                <TableCell>Defesa</TableCell>
+                <TableCell>Movimento</TableCell>
+                <TableCell>Status</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {heroesList.map((hero) => {
+                return (
+                  <TableRow key={hero.id}>
+                    <TableCell>
+                      <Avatar src={hero.avatar[0]?.img} />
+                    </TableCell>
+                    <TableCell>
+                      #{hero.id} {hero.name}
+                    </TableCell>
+                    <TableCell>
+                      {hero.coin} {hero.value}
+                    </TableCell>
+                    <TableCell>{hero.attack}</TableCell>
+                    <TableCell>{hero.defender}</TableCell>
+                    <TableCell>{hero.move}</TableCell>
+                    <TableCell>{hero.status}</TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
+          </Table>
+        )}
+
+        {!visualTable && (
+          <Grid container spacing={1}>
+            {heroesList.map((hero) => (
+              <Grid item key={hero.id}>
+                <HeroCard hero={hero} />
+                <div style={{ textAlign: 'center' }}>
+                  <div>
+                    Valor: {hero.coin} {hero.value}
+                  </div>
+                  <div>Status: {hero.status}</div>
+                  {hero.owner && (
+                    <div>
+                      Dono: {hero.owner?.name} ({hero.owner?.id})
+                    </div>
+                  )}
+                </div>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+        )}
+      </div>
 
       {open && <AddOrEditModal onSave={onSave} onHide={() => setOpen(false)} />}
     </div>

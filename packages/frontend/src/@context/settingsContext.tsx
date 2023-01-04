@@ -5,10 +5,10 @@ import { createContext, useState, ReactNode, useContext } from 'react'
 import { PaletteMode } from '@mui/material'
 
 // ** ThemeConfig Import
-import themeConfig from '../../configs/themeConfig'
+import themeConfig from '../configs/themeConfig'
 
 // ** Types Import
-import { ThemeColor, ContentWidth } from '../../@core/layouts/types'
+import { ThemeColor, ContentWidth } from '../@core/layouts/types'
 
 export type Settings = {
   mode: PaletteMode
@@ -28,7 +28,7 @@ const initialSettings: Settings = {
 }
 
 // ** Create Context
-export const SettingsContext = createContext<SettingsContextValue>({
+const SettingsContext = createContext<SettingsContextValue>({
   saveSettings: () => null,
   settings: initialSettings,
 })

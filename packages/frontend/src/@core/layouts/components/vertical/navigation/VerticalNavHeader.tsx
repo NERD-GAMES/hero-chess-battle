@@ -10,7 +10,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import Typography, { TypographyProps } from '@mui/material/Typography'
 
 // ** Type Import
-import { Settings } from '../../../../../@core/context/settingsContext'
+import { Settings } from '../../../../../@context/settingsContext'
 
 // ** Configs
 import themeConfig from '../../../../../configs/themeConfig'
@@ -62,12 +62,7 @@ const VerticalNavHeader = (props: Props) => {
       ) : (
         <Link href="/" passHref legacyBehavior>
           <StyledLink>
-            <Image
-              src="/img/logo.svg"
-              alt="logo"
-              width={300 / 2}
-              height={55 / 2}
-            />
+            <img src="/img/logo.png" alt="logo" width={50} height={50} />
           </StyledLink>
         </Link>
       )}

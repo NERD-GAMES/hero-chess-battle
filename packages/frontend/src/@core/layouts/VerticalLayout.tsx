@@ -41,6 +41,7 @@ const ContentWrapper = styled('main')(({ theme }) => ({
   flexGrow: 1,
   width: '100%',
   padding: theme.spacing(6),
+  paddingTop: 0,
   transition: 'padding .25s ease-in-out',
   [theme.breakpoints.down('sm')]: {
     paddingLeft: theme.spacing(4),
@@ -49,17 +50,12 @@ const ContentWrapper = styled('main')(({ theme }) => ({
 }))
 
 const VerticalLayout = (props: LayoutProps) => {
-  // ** Props
   const { settings, children, scrollToTop } = props
-
-  // ** Vars
   const { contentWidth } = settings
   const navWidth = themeConfig.navigationSize
 
-  // ** States
   const [navVisible, setNavVisible] = useState<boolean>(false)
 
-  // ** Toggle Functions
   const toggleNavVisibility = () => setNavVisible(!navVisible)
 
   return (
@@ -74,10 +70,8 @@ const VerticalLayout = (props: LayoutProps) => {
           {...props}
         />
         <MainContentWrapper className="layout-content-wrapper">
-          {/* AppBar Component */}
           <AppBar toggleNavVisibility={toggleNavVisibility} {...props} />
 
-          {/* Content */}
           <ContentWrapper
             className="layout-page-content"
             sx={{

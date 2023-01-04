@@ -18,19 +18,17 @@ import UserLayout from '../layouts/UserLayout'
 import ThemeComponent from '../@core/theme/ThemeComponent'
 
 // ** Contexts
-import {
-  SettingsConsumer,
-  SettingsProvider,
-} from '../@core/context/settingsContext'
+import { SettingsConsumer, SettingsProvider } from '../@context/settingsContext'
 
 // ** Utils Imports
 import { createEmotionCache } from '../@core/utils/create-emotion-cache'
 
 // ** React Perfect Scrollbar Style
 import 'react-perfect-scrollbar/dist/css/styles.css'
+import { UserProvider } from '../@context/userContext'
 
 // ** Global css styles
-// import '../styles/globals.css'
+import '../styles/globals.css'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -70,17 +68,19 @@ export default function MyApp(props: MyAppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <CacheProvider value={emotionCache}>
-        <SettingsProvider>
-          <SettingsConsumer>
-            {({ settings }) => {
-              return (
-                <ThemeComponent settings={settings}>
-                  {getLayout(<Component {...pageProps} />)}
-                </ThemeComponent>
-              )
-            }}
-          </SettingsConsumer>
-        </SettingsProvider>
+        <UserProvider>
+          <SettingsProvider>
+            <SettingsConsumer>
+              {({ settings }) => {
+                return (
+                  <ThemeComponent settings={settings}>
+                    {getLayout(<Component {...pageProps} />)}
+                  </ThemeComponent>
+                )
+              }}
+            </SettingsConsumer>
+          </SettingsProvider>
+        </UserProvider>
       </CacheProvider>
     </>
   )

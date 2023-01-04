@@ -1,10 +1,15 @@
 export enum HERO_MOVE {
-  Pawn = "P",
-  Tower = "T",
-  Horse = "H",
-  Bishop = "B",
-  Queen = "Q",
-  King = "K"
+  Pawn = 'P',
+  Tower = 'T',
+  Horse = 'H',
+  Bishop = 'B',
+  Queen = 'Q',
+  King = 'K',
+}
+
+export enum HERO_STATUS {
+  Draft = 'D',
+  Available = 'A',
 }
 
 export enum HERO_TYPE {
@@ -14,23 +19,23 @@ export enum HERO_TYPE {
 }
 
 export enum HERO_COIN {
-  HeroCoin = "HC",
-  Dollar = "$",
-  Real = "R$",
+  HeroCoin = 'HC',
+  Dollar = '$',
+  Real = 'R$',
 }
 
 export enum HERO_RARITY {
-  Common = "C",
-  Rare = "R",
-  SuperRare = "SR",
-  Epic = "E",
-  Legend = "L",
-  SPLegend = "SL",
+  Common = 'C',
+  Rare = 'R',
+  SuperRare = 'SR',
+  Epic = 'E',
+  Legend = 'L',
+  SPLegend = 'SL',
 }
 
 interface IHeroAvatarStyle {
   left?: number
-  width?: number 
+  width?: number
   right?: number
   top?: number
 }
@@ -56,6 +61,7 @@ export interface IHero {
   move: HERO_MOVE
   rarity: HERO_RARITY
   value: number
+  status: HERO_STATUS
   owner?: INameId
   coin: HERO_COIN
   avatar: IHeroAvatar[]

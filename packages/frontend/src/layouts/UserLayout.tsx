@@ -17,7 +17,8 @@ import VerticalNavItems from '../navigation/vertical'
 import VerticalAppBarContent from './components/vertical/AppBarContent'
 
 // ** Hook Import
-import { useSettings } from '../@core/context/settingsContext'
+import { useSettings } from '../@context/settingsContext'
+import Image from 'next/image'
 
 interface Props {
   children: ReactNode
@@ -40,16 +41,12 @@ const UserLayout = ({ children }: Props) => {
   const UpgradeToProImg = () => {
     return (
       <Box sx={{ mx: 'auto' }}>
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="https://themeselection.com/products/materio-mui-react-nextjs-admin-template/"
-        >
-          <img
+        <a target="_blank" rel="noreferrer" href="">
+          {/* <img
             width={230}
             alt="upgrade to premium"
             src={`/images/misc/upgrade-banner-${settings.mode}.png`}
-          />
+          /> */}
         </a>
       </Box>
     )

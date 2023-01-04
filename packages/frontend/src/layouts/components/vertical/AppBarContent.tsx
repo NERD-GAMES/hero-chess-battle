@@ -11,7 +11,7 @@ import Menu from 'mdi-material-ui/Menu'
 import Magnify from 'mdi-material-ui/Magnify'
 
 // ** Type Import
-import { Settings } from '../../../@core/context/settingsContext'
+import { Settings } from '../../../@context/settingsContext'
 
 // ** Components
 import ModeToggler from '../../../@core/layouts/components/shared-components/ModeToggler'

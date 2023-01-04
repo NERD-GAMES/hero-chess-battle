@@ -22,6 +22,7 @@ import LogoutVariant from 'mdi-material-ui/LogoutVariant'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
+import { useUserContext } from '../../../../@context/userContext'
 
 // ** Styled Components
 const BadgeContentSpan = styled('span')(({ theme }) => ({
@@ -29,15 +30,21 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
   height: 8,
   borderRadius: '50%',
   backgroundColor: theme.palette.success.main,
-  boxShadow: `0 0 0 2px ${theme.palette.background.paper}`
+  boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
 }))
 
 const UserDropdown = () => {
+  const { user, onSignOut } = useUserContext()
   // ** States
   const [anchorEl, setAnchorEl] = useState<Element | null>(null)
 
   // ** Hooks
   const router = useRouter()
+
+  const handleOnSignOut = () => {
+    onSignOut()
+    handleDropdownClose()
+  }
 
   const handleDropdownOpen = (event: SyntheticEvent) => {
     setAnchorEl(event.currentTarget)
@@ -60,24 +67,24 @@ const UserDropdown = () => {
     textDecoration: 'none',
     '& svg': {
       fontSize: '1.375rem',
-      color: 'text.secondary'
-    }
+      color: 'text.secondary',
+    },
   }
 
   return (
     <Fragment>
       <Badge
-        overlap='circular'
+        overlap="circular"
         onClick={handleDropdownOpen}
         sx={{ ml: 2, cursor: 'pointer' }}
         badgeContent={<BadgeContentSpan />}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       >
         <Avatar
-          alt='John Doe'
+          alt={user.displayName}
           onClick={handleDropdownOpen}
           sx={{ width: 40, height: 40 }}
-          src='/images/avatars/1.png'
+          src={user.photoURL}
         />
       </Badge>
       <Menu
@@ -91,15 +98,31 @@ const UserDropdown = () => {
         <Box sx={{ pt: 2, pb: 3, px: 4 }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Badge
-              overlap='circular'
+              overlap="circular"
               badgeContent={<BadgeContentSpan />}
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             >
-              <Avatar alt='John Doe' src='/images/avatars/1.png' sx={{ width: '2.5rem', height: '2.5rem' }} />
+              <Avatar
+                alt={user.displayName}
+                src={user.photoURL}
+                sx={{ width: '2.5rem', height: '2.5rem' }}
+              />
             </Badge>
-            <Box sx={{ display: 'flex', marginLeft: 3, alignItems: 'flex-start', flexDirection: 'column' }}>
-              <Typography sx={{ fontWeight: 600 }}>John Doe</Typography>
-              <Typography variant='body2' sx={{ fontSize: '0.8rem', color: 'text.disabled' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                marginLeft: 3,
+                alignItems: 'flex-start',
+                flexDirection: 'column',
+              }}
+            >
+              <Typography sx={{ fontWeight: 600 }}>
+                {user.displayName}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ fontSize: '0.8rem', color: 'text.disabled' }}
+              >
                 Admin
               </Typography>
             </Box>
@@ -144,9 +167,15 @@ const UserDropdown = () => {
           </Box>
         </MenuItem>
         <Divider />
-        <MenuItem sx={{ py: 2 }} onClick={() => handleDropdownClose('/pages/login')}>
-          <LogoutVariant sx={{ marginRight: 2, fontSize: '1.375rem', color: 'text.secondary' }} />
-          Logout
+        <MenuItem sx={{ py: 2 }} onClick={handleOnSignOut}>
+          <LogoutVariant
+            sx={{
+              marginRight: 2,
+              fontSize: '1.375rem',
+              color: 'text.secondary',
+            }}
+          />
+          Sair
         </MenuItem>
       </Menu>
     </Fragment>

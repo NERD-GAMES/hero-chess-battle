@@ -4,21 +4,26 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Divider,
   Fab,
   Grid,
+  IconButton,
   MenuItem,
   TextField,
 } from '@mui/material'
+import { Close } from 'mdi-material-ui'
 import { useState } from 'react'
 import {
   HERO_COIN,
   HERO_MOVE,
   HERO_RARITY,
+  HERO_STATUS,
   HERO_TYPE,
   IHero,
 } from '../@types/IHero'
 import { fileUploader } from '../services/storage/fileUploader'
 import { HeroCard } from './heroCard'
+import { Title } from './title'
 
 const INITIAL_HERO: IHero = {
   id: '',
@@ -26,6 +31,7 @@ const INITIAL_HERO: IHero = {
   description: ``,
   attack: 10,
   defender: 10,
+  status: HERO_STATUS.Draft,
   type: HERO_TYPE.Hero,
   move: HERO_MOVE.Pawn,
   rarity: HERO_RARITY.Common,
@@ -51,6 +57,15 @@ const coinList = (Object.keys(HERO_COIN) as Array<keyof typeof HERO_COIN>).map(
     }
   },
 )
+
+const statusList = (
+  Object.keys(HERO_STATUS) as Array<keyof typeof HERO_STATUS>
+).map((s) => {
+  return {
+    id: HERO_STATUS[s],
+    label: s,
+  }
+})
 
 const moveList = (Object.keys(HERO_MOVE) as Array<keyof typeof HERO_MOVE>).map(
   (r) => {
@@ -90,11 +105,20 @@ export const AddOrEditModal = ({ onHide, onSave }) => {
 
   return (
     <Dialog open onClose={() => onHide(false)} maxWidth="md" fullWidth>
-      <DialogTitle>Adicionando um novo herói</DialogTitle>
+      <DialogTitle>
+        <Title
+          title="Adicionando um novo herói"
+          actionsRight={
+            <IconButton onClick={() => onHide(false)}>
+              <Close />
+            </IconButton>
+          }
+        />
+      </DialogTitle>
       <DialogContent>
-        <Grid container spacing={1} sx={{ mt: 1 }}>
+        <Grid container spacing={2} sx={{ mt: 1 }}>
           <Grid item xs>
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
               <Grid item xs={6}>
                 <TextField
                   fullWidth
@@ -120,6 +144,18 @@ export const AddOrEditModal = ({ onHide, onSave }) => {
                   ))}
                 </TextField>
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Descrição"
+                  onChange={handleChange}
+                  name="description"
+                  value={hero.description}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Divider>Poderes</Divider>
+              </Grid>
               <Grid item xs={3}>
                 <TextField
                   fullWidth
@@ -130,6 +166,7 @@ export const AddOrEditModal = ({ onHide, onSave }) => {
                   value={hero.attack}
                 />
               </Grid>
+
               <Grid item xs={3}>
                 <TextField
                   fullWidth
@@ -141,15 +178,6 @@ export const AddOrEditModal = ({ onHide, onSave }) => {
                 />
               </Grid>
 
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  label="Descrição"
-                  onChange={handleChange}
-                  name="description"
-                  value={hero.description}
-                />
-              </Grid>
               <Grid item xs={6}>
                 <TextField
                   select
@@ -170,13 +198,36 @@ export const AddOrEditModal = ({ onHide, onSave }) => {
                 <TextField
                   select
                   fullWidth
+                  label="Status"
+                  onChange={handleChange}
+                  name="status"
+                  value={hero.status}
+                >
+                  {statusList.map((stt) => (
+                    <MenuItem key={stt.id} value={stt.id}>
+                      {stt.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+              <Grid item xs={12}>
+                <Divider>Moeda</Divider>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  select
+                  fullWidth
                   label="Moeda"
                   onChange={handleChange}
                   name="coin"
                   value={hero.coin}
                 >
                   {coinList.map((coin) => (
-                    <MenuItem key={coin.id} value={coin.id}>
+                    <MenuItem
+                      disabled={coin.id !== HERO_COIN.HeroCoin}
+                      key={coin.id}
+                      value={coin.id}
+                    >
                       {coin.label}
                     </MenuItem>
                   ))}
@@ -213,7 +264,7 @@ export const AddOrEditModal = ({ onHide, onSave }) => {
             </Grid>
           </Grid>
           <Grid item>
-            <Grid container direction="column" spacing={1}>
+            <Grid container direction="column" spacing={2}>
               <Grid item>
                 <HeroCard hero={hero} />
               </Grid>

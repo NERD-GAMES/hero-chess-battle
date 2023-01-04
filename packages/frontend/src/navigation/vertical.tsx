@@ -1,12 +1,8 @@
 // ** Icon imports
-import {
-  Login,
-  HomeOutline,
-  ListStatus,
-} from 'mdi-material-ui'
+import { Login, HomeOutline, ListStatus } from 'mdi-material-ui'
 
 // ** Type import
-import { VerticalNavItemsType } from '../../@core/layouts/types'
+import { VerticalNavItemsType } from '../@core/layouts/types'
 
 const navigation = (): VerticalNavItemsType => {
   return [
@@ -34,9 +30,11 @@ const navigation = (): VerticalNavItemsType => {
       path: '/account',
     },
     {
-      title: 'Admin',
+      title: 'Heróis',
       icon: ListStatus,
-      path: '/admin',
+      badgeColor: 'warning',
+      badgeContent: 'admin',
+      path: '/admin/heroes',
     },
   ]
 }

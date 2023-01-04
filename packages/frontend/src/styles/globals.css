@@ -8,8 +8,9 @@ body {
 }
 
 code {
-  font-family: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  font-family: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue';
   padding: 0.1rem 0.4rem;
   font-size: 90%;
   color: #d400ff;
@@ -21,4 +22,13 @@ code:not([class*='language-']):after {
 }
 code[class*='language-'] {
   padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
