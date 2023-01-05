@@ -54,12 +54,12 @@ const zeus: IHero = {
   avatar: [
     {
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHdsINzUAN21PwrIiV3A6WY9N4i4WspwB8WQ&usqp=CAU',
-      style: { left: 20 },
+      style: { left: 50 },
     },
     {
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpAG0qvjFupIRGWlIxLgpdPVvSxn0UBzFwYQ&usqp=CAU',
-      animates: ['bounce', 'delay-1s', 'slower'],
-      style: { width: 120, right: 50, top: -20 },
+      animates: ['bounce', 'delay-1s', 'slower', "infinite"],
+      style: { width: 120, left: 40, top: -20 },
     },
   ],
 }
@@ -118,4 +118,34 @@ const toto: IHero = {
   ],
 }
 
-export const heroes: IHero[] = [sharp, zeus, lupita, toto]
+
+const pirulito: IHero = {
+  id: '5',
+  name: 'Pirulito',
+  description: `Essa cachorrão da melho, mas é um brincalão`,
+  owner: {
+    id: '123',
+    name: 'George',
+  },
+  attack: 200,
+  defender: 1500,
+  status: HERO_STATUS.Draft,
+  type: HERO_TYPE.Hero,
+  move: HERO_MOVE.Pawn,
+  rarity: HERO_RARITY.SuperRare,
+  value: 258,
+  coin: HERO_COIN.Dollar,
+  avatar: [
+    {
+      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHdsINzUAN21PwrIiV3A6WY9N4i4WspwB8WQ&usqp=CAU',
+      style: { left: 20 },
+    },
+    {
+      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpAG0qvjFupIRGWlIxLgpdPVvSxn0UBzFwYQ&usqp=CAU',
+      animates: ['bounce', 'delay-1s', 'slower'],
+      style: { width: 120, right: 50, top: -20 },
+    },
+  ],
+}
+
+export const heroes: IHero[] = [sharp, zeus, lupita, toto, pirulito]

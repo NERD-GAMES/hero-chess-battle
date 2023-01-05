@@ -36,6 +36,13 @@ const navigation = (): VerticalNavItemsType => {
       badgeContent: 'admin',
       path: '/admin/heroes',
     },
+    {
+      title: 'Game',
+      icon: ListStatus,
+      badgeColor: 'warning',
+      badgeContent: 'rascunho',
+      path: '/game/123',
+    },
   ]
 }
 

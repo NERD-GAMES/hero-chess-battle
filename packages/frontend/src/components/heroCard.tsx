@@ -2,6 +2,7 @@ import { Chip, Divider, Paper, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 import 'animate.css'
 import { IHero } from '../@types/IHero'
+import { HeroCardPhoto } from './heroCardPhoto'
 
 interface IProps {
   hero: IHero
@@ -42,8 +43,6 @@ export const HeroCard = ({ hero }: IProps) => {
       </div>
       <div
         css={css`
-          position: relative;
-          height: 200px;
           border-radius: 20px;
           border: 2px solid gray;
           &:hover {
@@ -51,29 +50,7 @@ export const HeroCard = ({ hero }: IProps) => {
           }
         `}
       >
-        {hero.avatar.map((a, idx) => {
-          let animates = ''
-          if (a.animates?.length > 0) {
-            animates = 'animate__animated '
-            animates += a.animates.map((an) => 'animate__' + an).join(' ')
-          }
-
-          return (
-            <picture key={hero.id + a.img}>
-              <img
-                className={animates}
-                src={a.img}
-                style={{
-                  ...a.style,
-                  position: 'absolute',
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                }}
-                alt=""
-              />
-            </picture>
-          )
-        })}
+        <HeroCardPhoto hero={hero} />
       </div>
       <Typography
         css={css`

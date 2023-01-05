@@ -14,6 +14,7 @@ import {
 } from '@mui/material'
 import { AddOrEditModal } from '../../components/addOrEditModal'
 import { Title } from '../../components/title'
+import { HeroCardPhoto } from '../../components/heroCardPhoto'
 
 const sumPercent = (value: number, percent: number) => {
   const newValue = Number(value)
@@ -138,7 +139,7 @@ export default () => {
                 return (
                   <TableRow key={hero.id}>
                     <TableCell>
-                      <Avatar src={hero.avatar[0]?.img} />
+                      <HeroCardPhoto hero={hero} multiple={0.25} />
                     </TableCell>
                     <TableCell>
                       #{hero.id} {hero.name}
